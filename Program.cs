@@ -9,8 +9,8 @@ namespace ConsoleApplication
             Console.WriteLine("Choose an option:");
             Console.WriteLine("1. Shift");
             Console.WriteLine("2. Pairs");
-            int desicion = Convert.ToInt32(Console.ReadLine());
-            switch(desicion)
+            int decision = Convert.ToInt32(Console.ReadLine());
+            switch(decision)
             {
                 case 1:
                     Shift();
