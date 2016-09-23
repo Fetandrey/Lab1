@@ -10,12 +10,12 @@ namespace ConsoleApplication
         }
         private static void Shift()
         {
-            Console.WriteLine("Set the number of elements in the array:\nN=");
+            Console.Write("Set the number of elements in the array:\nN = ");
             int N = Convert.ToInt32(Console.ReadLine());
             int[] A = new int[N];
             int i = 0;
             Console.WriteLine("Fill the array of {0} elements with integers (whole numbers). "+ 
-            "Separate each number by whitespace or by pressing \"Enter\":", N);
+            "Separate each number by space or by pressing \"Enter\":", N);
             while(i < N)
             {
                 string currentLine = Console.ReadLine();
@@ -26,20 +26,21 @@ namespace ConsoleApplication
                     i++;
                 }
             }
-            Console.WriteLine("Set shift:\nK");
+            Console.Write("Set shift:\nK = ");
             int K = Convert.ToInt32(Console.ReadLine());
             Console.Write("Before: ");
             PrintArray(A);
             int[] B = new int[N];
             for(i = 0; i < N; i++)
                 B[(i+K)%N] = A[i];
+            Console.Write("After:  ");
             PrintArray(B);
             Console.ReadLine();
         }
         private static void PrintArray(int[] array)
         {
             for(int i = 0; i < array.Length; i++)
-                Console.Write("{0}; ", array[i]);
+                Console.Write("{0} ", array[i]);
             Console.WriteLine();
         }
     }
