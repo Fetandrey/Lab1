@@ -6,8 +6,7 @@ namespace ConsoleApplication
     {
         public static void Main(string[] args)
         {
-            //Shift();
-            Pairs();
+
         }
         private static void Shift()
         {
@@ -49,9 +48,6 @@ namespace ConsoleApplication
             {
                 matches[A[i]]++;
             }
-            PrintArray(A);
-            Console.WriteLine("0 1 2 3 4 5 6 7 8 9");
-            PrintArray(matches);
             valid = false;
             i = 0;
             while(!valid)
