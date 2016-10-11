@@ -32,9 +32,7 @@ namespace ConsoleApplication
             int K = Convert.ToInt32(Console.ReadLine());
             Console.Write("Before: ");
             PrintArray(A);
-            int[] B = new int[N];
-            for(int i = 0; i < N; i++)
-                B[(i+K)%N] = A[i];
+            int[] B = ChangeArray(A, K);
             Console.Write("After:  ");
             PrintArray(B);
             Console.ReadLine();
@@ -57,33 +55,46 @@ namespace ConsoleApplication
             }
             Console.WriteLine("Fill the array with pairs of numbers. One number leave without a pair.");
             int[] A = FillArray(N);
+            Console.WriteLine("Number without pair is {0}", FindNumber(A));
+            Console.ReadLine();
+        }
+        private static int[] ChangeArray(int[] initialArray, int shift)
+        {
+            int N = initialArray.Length;
+            int[] changedArray = new int[N];
+            for (int i = 0; i < N; i++)
+                changedArray[(i + shift) % N] = initialArray[i];
+            return changedArray;
+        }
+        private static int FindNumber(int[] array)
+        {
+            int N = array.Length;
             Hashtable matches = new Hashtable();
             int i = 0;
-            for(i = 0; i < N; i++)
+            for (i = 0; i < N; i++)
             {
-                if(matches[A[i]]==null)
+                if (matches[array[i]] == null)
                 {
-                    matches[A[i]] = 1;
+                    matches[array[i]] = 1;
                 }
                 else
                 {
-                    int value = Convert.ToInt32(matches[A[i]]);
+                    int value = Convert.ToInt32(matches[array[i]]);
                     value++;
-                    matches[A[i]] = value;
+                    matches[array[i]] = value;
                 }
             }
             int result = 0;
-            foreach(int key in matches.Keys)
+            foreach (int key in matches.Keys)
             {
                 //Console.WriteLine("Key = " + key + "\tValue = " + matches[key]);
-                if(Convert.ToInt32(matches[key])%2 != 0)
+                if (Convert.ToInt32(matches[key]) % 2 != 0)
                 {
                     result = key;
                     break;
                 }
             }
-            Console.WriteLine("Number without pair is {0}", result);
-            Console.ReadLine();
+            return result;
         }
         private static void PrintArray(int[] array)
         {
