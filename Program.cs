@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 
 namespace ConsoleApplication
 {
@@ -56,21 +57,32 @@ namespace ConsoleApplication
             }
             Console.WriteLine("Fill the array with pairs of numbers. One number leave without a pair.");
             int[] A = FillArray(N);
-            int[] matches = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+            Hashtable matches = new Hashtable();
             int i = 0;
             for(i = 0; i < N; i++)
             {
-                matches[A[i]]++;
+                if(matches[A[i]]==null)
+                {
+                    matches[A[i]] = 1;
+                }
+                else
+                {
+                    int value = Convert.ToInt32(matches[A[i]]);
+                    value++;
+                    matches[A[i]] = value;
+                }
             }
-            valid = false;
-            i = 0;
-            while(!valid)
+            int result = 0;
+            foreach(int key in matches.Keys)
             {
-                if(matches[i]%2 != 0)
-                    valid = true;
-                i++;
+                //Console.WriteLine("Key = " + key + "\tValue = " + matches[key]);
+                if(Convert.ToInt32(matches[key])%2 != 0)
+                {
+                    result = key;
+                    break;
+                }
             }
-            Console.WriteLine("Number without pair is {0}", i-1);
+            Console.WriteLine("Number without pair is {0}", result);
             Console.ReadLine();
         }
         private static void PrintArray(int[] array)

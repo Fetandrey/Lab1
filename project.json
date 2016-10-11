@@ -4,7 +4,9 @@
     "debugType": "portable",
     "emitEntryPoint": true
   },
-  "dependencies": {},
+  "dependencies": {
+    "System.Collections.NonGeneric": "4.0.1"
+  },
   "frameworks": {
     "netcoreapp1.0": {
       "dependencies": {
