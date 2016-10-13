@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace ConsoleApplication
@@ -46,7 +45,7 @@ namespace ConsoleApplication
             {
                 Console.Write("Set the number of elements in the array. IT MUST BE ODD:\nN = ");
                 N = Convert.ToInt32(Console.ReadLine());
-                if(N%2 == 0)
+                if(N % 2 == 0)
                 {
                     Console.Clear();
                     Console.WriteLine("This number is even. Please try again!");
@@ -80,9 +79,7 @@ namespace ConsoleApplication
                 }
                 else
                 {
-                    int value = Convert.ToInt32(matches[array[i]]);
-                    value++;
-                    matches[array[i]] = value;
+                    matches[array[i]]++;
                 }
             }
             int result = 0;
