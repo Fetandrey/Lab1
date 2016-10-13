@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace ConsoleApplication
 {
@@ -69,11 +70,11 @@ namespace ConsoleApplication
         private static int FindNumber(int[] array)
         {
             int N = array.Length;
-            Hashtable matches = new Hashtable();
+            Dictionary<int, int> matches = new Dictionary<int, int>();
             int i = 0;
             for (i = 0; i < N; i++)
             {
-                if (matches[array[i]] == null)
+                if (!matches.ContainsKey(array[i]))
                 {
                     matches[array[i]] = 1;
                 }
@@ -88,7 +89,7 @@ namespace ConsoleApplication
             foreach (int key in matches.Keys)
             {
                 //Console.WriteLine("Key = " + key + "\tValue = " + matches[key]);
-                if (Convert.ToInt32(matches[key]) % 2 != 0)
+                if (matches[key] % 2 != 0)
                 {
                     result = key;
                     break;
